@@ -30,6 +30,10 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 -- lvim.keys.normal_mode["<Leader>ñ"] = ":q!<cr>"
 lvim.keys.normal_mode["<A-l>"] = "$"
 lvim.keys.normal_mode["<A-h>"] = "_"
+-- Navigate buffers
+lvim.keys.normal_mode["<S-l>"] = ":bnext<CR>"
+lvim.keys.normal_mode["<S-h>"] = ":bprevious<CR>_"
+--
 lvim.keys.insert_mode["jk"] = "<Esc>"
 lvim.keys.insert_mode["<C-l>"] = "<Del>"
 
@@ -47,8 +51,8 @@ lvim.builtin.which_key.mappings["m"] = {
 	u = { "<cmd>:G pull<cr>", "Pull" },
 }
 -- -- Change theme settings
--- lvim.colorscheme = "lunar"
-lvim.colorscheme = "tokyonight-night"
+lvim.colorscheme = "lunar"
+-- lvim.colorscheme = "tokyonight-night"
 
 -- After changing plugin config exit and reopen LunarVim, Run :PackerSync
 lvim.builtin.alpha.active = true
