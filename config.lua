@@ -59,7 +59,7 @@ lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
-lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
+lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
 lvim.builtin.indentlines.active = false
 
 -- Automatically install missing parsers when entering buffer
@@ -129,6 +129,26 @@ linters.setup({
 lvim.plugins = {
 	{
 		"tpope/vim-fugitive",
+	},
+	{
+		"tzachar/cmp-tabnine",
+		config = function()
+			local tabnine = require("cmp_tabnine.config")
+			tabnine:setup({
+				max_lines = 1000,
+				max_num_results = 20,
+				sort = true,
+				run_on_every_keystroke = true,
+				snippet_placeholder = "..",
+				ignored_file_types = { -- default is not to ignore
+					-- uncomment to ignore in lua:
+					-- lua = true
+				},
+			})
+		end,
+
+		run = "./install.sh",
+		requires = "hrsh7th/nvim-cmp",
 	},
 }
 
