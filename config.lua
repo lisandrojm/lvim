@@ -11,6 +11,7 @@ vim.opt.relativenumber = true
 vim.opt.colorcolumn = "80"
 vim.opt.timeoutlen = 40
 vim.opt.updatetime = 10
+vim.opt.showtabline = 2 -- always show tabs
 
 -- general
 lvim.log.level = "info"
@@ -51,16 +52,20 @@ lvim.builtin.which_key.mappings["m"] = {
 	u = { "<cmd>:G pull<cr>", "Pull" },
 }
 -- -- Change theme settings
-lvim.colorscheme = "lunar"
--- lvim.colorscheme = "tokyonight-night"
+-- lvim.colorscheme = "lunar"
+lvim.colorscheme = "tokyonight-night"
 
 -- After changing plugin config exit and reopen LunarVim, Run :PackerSync
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
+lvim.builtin.illuminate.active = false
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
 lvim.builtin.indentlines.active = false
+lvim.builtin.breadcrumbs.active = false
+lvim.builtin.bufferline.options.always_show_bufferline = true
+-- lvim.builtin.lualine.style = "default"
 
 -- Automatically install missing parsers when entering buffer
 lvim.builtin.treesitter.auto_install = true
@@ -101,7 +106,7 @@ formatters.setup({
 	{
 		command = "prettier",
 		extra_args = { "--print-with", "100" },
-		filetypes = { "typescript", "typescriptreact", "css" },
+		filetypes = { "typescript", "typescriptreact", "css", "scss" },
 	},
 	{
 		command = "black",
