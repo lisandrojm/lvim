@@ -10,8 +10,31 @@ vim.opt.relativenumber = true
 -- lisandrojm
 vim.opt.colorcolumn = "80"
 vim.opt.timeoutlen = 40
-vim.opt.updatetime = 10
+vim.opt.updatetime = 50
 vim.opt.showtabline = 2 -- always show tabs
+vim.opt.sidescrolloff = 8
+
+-- lag_solution
+local augroup = vim.api.nvim_create_augroup
+ThePrimeagenGroup = augroup("ThePrimeagen", {})
+
+local autocmd = vim.api.nvim_create_autocmd
+local yank_group = augroup("HighlightYank", {})
+
+function R(name)
+	require("plenary.reload").reload_module(name)
+end
+
+autocmd("TextYankPost", {
+	group = yank_group,
+	pattern = "*",
+	callback = function()
+		vim.highlight.on_yank({
+			higroup = "IncSearch",
+			timeout = 40,
+		})
+	end,
+})
 
 -- general
 lvim.log.level = "info"
@@ -51,6 +74,12 @@ lvim.builtin.which_key.mappings["m"] = {
 	p = { "<cmd>:G push<cr>", "Push" },
 	u = { "<cmd>:G pull<cr>", "Pull" },
 }
+lvim.builtin.which_key.mappings["h"] = {
+	name = "Harpoon",
+	a = { '<cmd>lua require("harpoon.mark").add_file()<cr>', "Add" },
+	u = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', "UI" },
+}
+
 -- -- Change theme settings
 -- lvim.colorscheme = "lunar"
 lvim.colorscheme = "tokyonight-night"
@@ -137,6 +166,9 @@ lvim.plugins = {
 		"tpope/vim-fugitive",
 	},
 	{
+		"ThePrimeagen/harpoon",
+	},
+	{
 		"tzachar/cmp-tabnine",
 		config = function()
 			local tabnine = require("cmp_tabnine.config")
@@ -166,3 +198,4 @@ lvim.plugins = {
 --     require("nvim-treesitter.highlight").attach(0, "bash")
 --   end,
 -- })
+--
