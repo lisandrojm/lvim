@@ -81,7 +81,7 @@ formatters.setup({
 	{
 		command = "prettier",
 		extra_args = { "--print-with", "100" },
-		filetypes = { "typescript", "typescriptreact", "css", "scss" },
+		filetypes = { "typescript", "typescriptreact", "css", "scss", "javascript" },
 	},
 	{
 		command = "black",
@@ -179,6 +179,9 @@ autocmd("TextYankPost", {
 --
 lvim.keys.normal_mode["<A-l>"] = "$"
 lvim.keys.normal_mode["<A-h>"] = "_"
+-- whitespaces
+lvim.keys.normal_mode["<A-9>"] = ":g/^$/d<CR>"
+
 -- Navigate buffers
 lvim.keys.normal_mode["<S-l>"] = ":bnext<CR>"
 lvim.keys.normal_mode["<S-h>"] = ":bprevious<CR>_"
