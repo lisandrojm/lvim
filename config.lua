@@ -108,12 +108,15 @@ linters.setup({
 --
 -- lisandrojm
 
+-- -- Change theme settings
 lvim.colorscheme = "tokyonight-night"
 
+-- After changing plugin config exit and reopen LunarVim, Run :PackerSync
 lvim.builtin.indentlines.active = false
 lvim.builtin.breadcrumbs.active = false
 lvim.builtin.bufferline.options.always_show_bufferline = true
 
+-- -- Additional Plugins <https://www.lunarvim.org/docs/plugins#user-plugins>
 lvim.plugins = {
 	{
 		"tpope/vim-fugitive",
@@ -143,6 +146,7 @@ lvim.plugins = {
 	},
 }
 
+-- vim options
 vim.opt.colorcolumn = "80"
 vim.opt.timeoutlen = 40
 vim.opt.updatetime = 50
@@ -171,17 +175,17 @@ autocmd("TextYankPost", {
 	end,
 })
 
--- lisandrojm
--- lvim.keys.normal_mode["<Leader>ñ"] = ":q!<cr>"
+-- keymappings <https://www.lunarvim.org/docs/configuration/keybindings>
+--
 lvim.keys.normal_mode["<A-l>"] = "$"
 lvim.keys.normal_mode["<A-h>"] = "_"
 -- Navigate buffers
 lvim.keys.normal_mode["<S-l>"] = ":bnext<CR>"
 lvim.keys.normal_mode["<S-h>"] = ":bprevious<CR>_"
---
 lvim.keys.insert_mode["jk"] = "<Esc>"
 lvim.keys.insert_mode["<C-l>"] = "<Del>"
 
+-- -- Use which-key to add extra bindings with the leader-key prefix
 lvim.builtin.which_key.mappings["m"] = {
 	name = "Fugitive",
 	a = { "<cmd>:G<cr>", "Status" },
