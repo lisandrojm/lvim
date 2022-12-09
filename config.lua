@@ -7,35 +7,6 @@
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.relativenumber = true
--- lisandrojm
-vim.opt.colorcolumn = "80"
-vim.opt.timeoutlen = 40
-vim.opt.updatetime = 50
-vim.opt.showtabline = 2 -- always show tabs
-vim.opt.sidescrolloff = 8
-
--- lag_solution
-local augroup = vim.api.nvim_create_augroup
-ThePrimeagenGroup = augroup("ThePrimeagen", {})
-
-local autocmd = vim.api.nvim_create_autocmd
-local yank_group = augroup("HighlightYank", {})
-
-function R(name)
-	require("plenary.reload").reload_module(name)
-end
-
-autocmd("TextYankPost", {
-	group = yank_group,
-	pattern = "*",
-	callback = function()
-		vim.highlight.on_yank({
-			higroup = "IncSearch",
-			timeout = 40,
-		})
-	end,
-})
-
 -- general
 lvim.log.level = "info"
 lvim.format_on_save = {
@@ -50,16 +21,6 @@ lvim.format_on_save = {
 lvim.leader = "space"
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
--- lisandrojm
--- lvim.keys.normal_mode["<Leader>ñ"] = ":q!<cr>"
-lvim.keys.normal_mode["<A-l>"] = "$"
-lvim.keys.normal_mode["<A-h>"] = "_"
--- Navigate buffers
-lvim.keys.normal_mode["<S-l>"] = ":bnext<CR>"
-lvim.keys.normal_mode["<S-h>"] = ":bprevious<CR>_"
---
-lvim.keys.insert_mode["jk"] = "<Esc>"
-lvim.keys.insert_mode["<C-l>"] = "<Del>"
 
 -- lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 -- lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
@@ -67,22 +28,9 @@ lvim.keys.insert_mode["<C-l>"] = "<Del>"
 -- -- Use which-key to add extra bindings with the leader-key prefix
 -- lvim.builtin.which_key.mappings["W"] = { "<cmd>noautocmd w<cr>", "Save without formatting" }
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
-lvim.builtin.which_key.mappings["m"] = {
-	name = "Fugitive",
-	a = { "<cmd>:G<cr>", "Status" },
-	c = { "<cmd>:G commit<cr>", "Commit" },
-	p = { "<cmd>:G push<cr>", "Push" },
-	u = { "<cmd>:G pull<cr>", "Pull" },
-}
-lvim.builtin.which_key.mappings["h"] = {
-	name = "Harpoon",
-	a = { '<cmd>lua require("harpoon.mark").add_file()<cr>', "Add" },
-	u = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', "UI" },
-}
 
 -- -- Change theme settings
--- lvim.colorscheme = "lunar"
-lvim.colorscheme = "tokyonight-night"
+--   lvim.colorscheme = "lunar"
 
 -- After changing plugin config exit and reopen LunarVim, Run :PackerSync
 lvim.builtin.alpha.active = true
@@ -91,9 +39,6 @@ lvim.builtin.illuminate.active = false
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
-lvim.builtin.indentlines.active = false
-lvim.builtin.breadcrumbs.active = false
-lvim.builtin.bufferline.options.always_show_bufferline = true
 -- lvim.builtin.lualine.style = "default"
 
 -- Automatically install missing parsers when entering buffer
@@ -160,7 +105,15 @@ linters.setup({
 --     },
 -- }
 --
+--
 -- lisandrojm
+
+lvim.colorscheme = "tokyonight-night"
+
+lvim.builtin.indentlines.active = false
+lvim.builtin.breadcrumbs.active = false
+lvim.builtin.bufferline.options.always_show_bufferline = true
+
 lvim.plugins = {
 	{
 		"tpope/vim-fugitive",
@@ -190,12 +143,107 @@ lvim.plugins = {
 	},
 }
 
--- -- Autocommands (`:help autocmd`) <https://neovim.io/doc/user/autocmd.html>
--- vim.api.nvim_create_autocmd("FileType", {
---   pattern = "zsh",
---   callback = function()
---     -- let treesitter use bash highlight for zsh files as well
---     require("nvim-treesitter.highlight").attach(0, "bash")
---   end,
--- })
+vim.opt.colorcolumn = "80"
+vim.opt.timeoutlen = 40
+vim.opt.updatetime = 50
+vim.opt.showtabline = 2 -- always show tabs
+vim.opt.sidescrolloff = 8
+
+-- lag_solution
+local augroup = vim.api.nvim_create_augroup
+ThePrimeagenGroup = augroup("ThePrimeagen", {})
+
+local autocmd = vim.api.nvim_create_autocmd
+local yank_group = augroup("HighlightYank", {})
+
+function R(name)
+	require("plenary.reload").reload_module(name)
+end
+
+autocmd("TextYankPost", {
+	group = yank_group,
+	pattern = "*",
+	callback = function()
+		vim.highlight.on_yank({
+			higroup = "IncSearch",
+			timeout = 40,
+		})
+	end,
+})
+
+-- lisandrojm
+-- lvim.keys.normal_mode["<Leader>ñ"] = ":q!<cr>"
+lvim.keys.normal_mode["<A-l>"] = "$"
+lvim.keys.normal_mode["<A-h>"] = "_"
+-- Navigate buffers
+lvim.keys.normal_mode["<S-l>"] = ":bnext<CR>"
+lvim.keys.normal_mode["<S-h>"] = ":bprevious<CR>_"
 --
+lvim.keys.insert_mode["jk"] = "<Esc>"
+lvim.keys.insert_mode["<C-l>"] = "<Del>"
+
+lvim.builtin.which_key.mappings["m"] = {
+	name = "Fugitive",
+	a = { "<cmd>:G<cr>", "Status" },
+	c = { "<cmd>:G commit<cr>", "Commit" },
+	p = { "<cmd>:G push<cr>", "Push" },
+	u = { "<cmd>:G pull<cr>", "Pull" },
+}
+lvim.builtin.which_key.mappings["h"] = {
+	name = "Harpoon",
+	a = { '<cmd>lua require("harpoon.mark").add_file()<cr>', "Add" },
+	u = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', "UI" },
+}
+
+lvim.builtin.which_key.mappings["."] = {
+	name = "Dap_Debug",
+	A = { "<cmd>lua require'debugHelper'.attachToRemote()<cr>", "AttachToRemote" },
+	a = { "<cmd>lua require'debugHelper'.attach()<cr>", "Attach" },
+	b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Breakpoint" },
+	c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
+	i = { "<cmd>lua require'dap'.step_into()<cr>", "Into" },
+	o = { "<cmd>lua require'dap'.step_over()<cr>", "Over" },
+	O = { "<cmd>lua require'dap'.step_out()<cr>", "Out" },
+	r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Repl" },
+	l = { "<cmd>lua require'dap'.run_last()<cr>", "Last" },
+	u = { "<cmd>lua require'dapui'.toggle()<cr>", "UI" },
+	x = { "<cmd>lua require'dap'.terminate()<cr>", "Exit" },
+	s = { "<cmd>lua local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes)<cr>", "Scopes" },
+	p = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Scopes" },
+	H = { "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>", "Set Breakpoint" },
+	n = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run to cursor" },
+	R = { "<cmd>lua require'dap'.clear_breakpoints()<cr>", "Clear Breakpoints" },
+	e = { "<cmd>lua require'dap'.set_exception_breakpoints({})<cr>", "Set Exception Breakpoints" },
+	h = { "<cmd>lua require'dap.ui.widgets'.hover()<cr>", "Hover" },
+	k = { "<cmd>lua require'dap'.up()<cr>zz", "Up" },
+	j = { "<cmd>lua require'dap'.down()<CR>zz]", "Down" },
+}
+
+-- javascript_dap
+
+local dap = require("dap")
+dap.adapters.node2 = {
+	type = "executable",
+	command = "node",
+	-- args = { os.getenv "HOME" .. "/vscode-node-debug2/out/src/nodeDebug.js" },
+	args = { os.getenv("HOME") .. "/dev/microsoft/vscode-node-debug2/out/src/nodeDebug.js" },
+}
+dap.configurations.javascript = {
+	{
+		name = "Launch",
+		type = "node2",
+		request = "launch",
+		program = "${file}",
+		cwd = vim.fn.getcwd(),
+		sourceMaps = true,
+		protocol = "inspector",
+		console = "integratedTerminal",
+	},
+	{
+		-- For this to work you need to make sure the node process is started with the `--inspect` flag.
+		name = "Attach to process",
+		type = "node2",
+		request = "attach",
+		processId = require("dap.utils").pick_process,
+	},
+}
