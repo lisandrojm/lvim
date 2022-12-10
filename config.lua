@@ -124,6 +124,7 @@ lvim.plugins = {
 		run = "./install.sh",
 		requires = "hrsh7th/nvim-cmp",
 	},
+	{ "p00f/nvim-ts-rainbow" },
 }
 -- vim options
 vim.opt.colorcolumn = "80"
@@ -150,10 +151,9 @@ lvim.builtin.which_key.mappings["m"] = {
 	p = { "<cmd>:G push<cr>", "Push" },
 	u = { "<cmd>:G pull<cr>", "Pull" },
 }
-lvim.builtin.which_key.mappings["h"] = {
-	name = "Harpoon",
-	a = { '<cmd>lua require("harpoon.mark").add_file()<cr>', "Add" },
-	u = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', "UI" },
+lvim.builtin.which_key.mappings["0"] = {
+	"<cmd>nohlsearch<CR>",
+	"No HL",
 }
 lvim.builtin.which_key.mappings["."] = {
 	name = "Dap_Debug",
@@ -213,6 +213,7 @@ local yank_group = augroup("HighlightYank", {})
 function R(name)
 	require("plenary.reload").reload_module(name)
 end
+
 autocmd("TextYankPost", {
 	group = yank_group,
 	pattern = "*",
@@ -223,3 +224,16 @@ autocmd("TextYankPost", {
 		})
 	end,
 })
+
+-- treesitter
+
+lvim.builtin.treesitter.rainbow = {
+	enable = true,
+	extended_mode = false,
+	colors = {
+		"DodgerBlue",
+		"Orchid",
+		"Gold",
+	},
+	disable = { "html" },
+}
