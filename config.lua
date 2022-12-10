@@ -29,7 +29,7 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 -- After changing plugin config exit and reopen LunarVim, Run :PackerSync
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
-lvim.builtin.illuminate.active = false
+-- lvim.builtin.illuminate.active = false
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
@@ -125,6 +125,8 @@ lvim.plugins = {
 		requires = "hrsh7th/nvim-cmp",
 	},
 	{ "p00f/nvim-ts-rainbow" },
+	{ "phaazon/hop.nvim" },
+	{ "andymass/vim-matchup" },
 }
 -- vim options
 vim.opt.colorcolumn = "80"
@@ -237,3 +239,13 @@ lvim.builtin.treesitter.rainbow = {
 	},
 	disable = { "html" },
 }
+
+-- hop
+
+local status_ok, hop = pcall(require, "hop")
+if not status_ok then
+	return
+end
+hop.setup()
+vim.api.nvim_set_keymap("", "s", ":HopChar2<cr>", { silent = true })
+vim.api.nvim_set_keymap("", "S", ":HopWord<cr>", { silent = true })
