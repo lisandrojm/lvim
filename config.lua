@@ -2,7 +2,6 @@
  THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
  `lvim` is the global options object
 ]]
-
 -- vim options
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
@@ -16,22 +15,17 @@ lvim.format_on_save = {
 }
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
-
 -- keymappings <https://www.lunarvim.org/docs/configuration/keybindings>
 lvim.leader = "space"
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
-
 -- lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 -- lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
-
 -- -- Use which-key to add extra bindings with the leader-key prefix
 -- lvim.builtin.which_key.mappings["W"] = { "<cmd>noautocmd w<cr>", "Save without formatting" }
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
-
 -- -- Change theme settings
 --   lvim.colorscheme = "lunar"
-
 -- After changing plugin config exit and reopen LunarVim, Run :PackerSync
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
@@ -40,30 +34,23 @@ lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
 -- lvim.builtin.lualine.style = "default"
-
 -- Automatically install missing parsers when entering buffer
 -- lvim.builtin.treesitter.auto_install = true
-
 -- lvim.builtin.treesitter.ignore_install = { "haskell" }
 -- lvim.builtin.treesitter.ignore_install = { "html" }
-
 -- -- generic LSP settings <https://www.lunarvim.org/docs/languages#lsp-support>
-
 -- --- disable automatic installation of servers
 -- lvim.lsp.installer.setup.automatic_installation = false
-
 -- ---configure a server manually. IMPORTANT: Requires `:LvimCacheReset` to take effect
 -- ---see the full default list `:lua =lvim.lsp.automatic_configuration.skipped_servers`
 -- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "pyright" })
 -- local opts = {} -- check the lspconfig documentation for a list of all possible options
 -- require("lvim.lsp.manager").setup("pyright", opts)
-
 ---remove a server from the skipped list, e.g. eslint, or emmet_ls. IMPORTANT: Requires `:LvimCacheReset` to take effect
 ---`:LvimInfo` lists which server(s) are skipped for the current filetype
 lvim.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(server)
 	return server ~= "emmet_ls"
 end, lvim.lsp.automatic_configuration.skipped_servers)
-
 -- -- you can set a custom on_attach function that will be used for all the language servers
 -- -- See <https://github.com/neovim/nvim-lspconfig#keybindings-and-completion>
 -- lvim.lsp.on_attach_callback = function(client, bufnr)
@@ -73,7 +60,6 @@ end, lvim.lsp.automatic_configuration.skipped_servers)
 --   --Enable completion triggered by <c-x><c-o>
 --   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 -- end
-
 -- linters and formatters <https://www.lunarvim.org/docs/languages#lintingformatting>
 local formatters = require("lvim.lsp.null-ls.formatters")
 formatters.setup({
@@ -96,7 +82,6 @@ linters.setup({
 		args = { "--severity", "warning" },
 	},
 })
-
 -- -- Additional Plugins <https://www.lunarvim.org/docs/plugins#user-plugins>
 -- lvim.plugins = {
 --     {
@@ -105,17 +90,13 @@ linters.setup({
 --     },
 -- }
 --
---
 -- lisandrojm
-
 -- -- Change theme settings
 lvim.colorscheme = "tokyonight-night"
-
 -- After changing plugin config exit and reopen LunarVim, Run :PackerSync
 lvim.builtin.indentlines.active = false
 lvim.builtin.breadcrumbs.active = false
 lvim.builtin.bufferline.options.always_show_bufferline = true
-
 -- -- Additional Plugins <https://www.lunarvim.org/docs/plugins#user-plugins>
 lvim.plugins = {
 	{
@@ -140,54 +121,27 @@ lvim.plugins = {
 				},
 			})
 		end,
-
 		run = "./install.sh",
 		requires = "hrsh7th/nvim-cmp",
 	},
 }
-
 -- vim options
 vim.opt.colorcolumn = "80"
 vim.opt.timeoutlen = 40
 vim.opt.updatetime = 50
 vim.opt.showtabline = 2 -- always show tabs
 vim.opt.sidescrolloff = 8
-
--- lag_solution
-local augroup = vim.api.nvim_create_augroup
-ThePrimeagenGroup = augroup("ThePrimeagen", {})
-
-local autocmd = vim.api.nvim_create_autocmd
-local yank_group = augroup("HighlightYank", {})
-
-function R(name)
-	require("plenary.reload").reload_module(name)
-end
-
-autocmd("TextYankPost", {
-	group = yank_group,
-	pattern = "*",
-	callback = function()
-		vim.highlight.on_yank({
-			higroup = "IncSearch",
-			timeout = 40,
-		})
-	end,
-})
-
 -- keymappings <https://www.lunarvim.org/docs/configuration/keybindings>
 --
 lvim.keys.normal_mode["<A-l>"] = "$"
 lvim.keys.normal_mode["<A-h>"] = "_"
 -- whitespaces
-lvim.keys.normal_mode["<A-9>"] = ":g/^$/d<CR>"
-
+lvim.keys.normal_mode["<A-,>"] = ":g/^$/d<CR>"
 -- Navigate buffers
 lvim.keys.normal_mode["<S-l>"] = ":bnext<CR>"
 lvim.keys.normal_mode["<S-h>"] = ":bprevious<CR>_"
 lvim.keys.insert_mode["jk"] = "<Esc>"
 lvim.keys.insert_mode["<C-l>"] = "<Del>"
-
 -- -- Use which-key to add extra bindings with the leader-key prefix
 lvim.builtin.which_key.mappings["m"] = {
 	name = "Fugitive",
@@ -201,7 +155,6 @@ lvim.builtin.which_key.mappings["h"] = {
 	a = { '<cmd>lua require("harpoon.mark").add_file()<cr>', "Add" },
 	u = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', "UI" },
 }
-
 lvim.builtin.which_key.mappings["."] = {
 	name = "Dap_Debug",
 	A = { "<cmd>lua require'debugHelper'.attachToRemote()<cr>", "AttachToRemote" },
@@ -225,9 +178,7 @@ lvim.builtin.which_key.mappings["."] = {
 	k = { "<cmd>lua require'dap'.up()<cr>zz", "Up" },
 	j = { "<cmd>lua require'dap'.down()<CR>zz]", "Down" },
 }
-
 -- javascript_dap
-
 local dap = require("dap")
 dap.adapters.node2 = {
 	type = "executable",
@@ -254,3 +205,21 @@ dap.configurations.javascript = {
 		processId = require("dap.utils").pick_process,
 	},
 }
+-- lag_solution
+local augroup = vim.api.nvim_create_augroup
+ThePrimeagenGroup = augroup("ThePrimeagen", {})
+local autocmd = vim.api.nvim_create_autocmd
+local yank_group = augroup("HighlightYank", {})
+function R(name)
+	require("plenary.reload").reload_module(name)
+end
+autocmd("TextYankPost", {
+	group = yank_group,
+	pattern = "*",
+	callback = function()
+		vim.highlight.on_yank({
+			higroup = "IncSearch",
+			timeout = 40,
+		})
+	end,
+})
