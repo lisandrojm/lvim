@@ -83,6 +83,8 @@ vim.filetype.add({
 	},
 })
 
+-- null-ls_format_on_save
+
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "bashls" })
 
 local lsp_manager = require("lvim.lsp.manager")
@@ -146,6 +148,20 @@ lvim.plugins = {
 	{ "p00f/nvim-ts-rainbow" },
 	{ "phaazon/hop.nvim" },
 	{ "andymass/vim-matchup" },
+	{ "lunarvim/vim-solidity" },
+	{
+		"jackMort/ChatGPT.nvim",
+		config = function()
+			require("chatgpt").setup({
+				-- optional configuration
+			})
+		end,
+		requires = {
+			"MunifTanjim/nui.nvim",
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
+	},
 }
 -- vim options
 vim.opt.colorcolumn = "80"
@@ -158,12 +174,14 @@ vim.opt.sidescrolloff = 8
 lvim.keys.normal_mode["<A-l>"] = "$"
 lvim.keys.normal_mode["<A-h>"] = "_"
 -- whitespaces
-lvim.keys.normal_mode["<A-,>"] = ":g/^$/d<CR>"
+lvim.keys.normal_mode["<A-ñ>"] = ":g/^$/d<CR>"
 -- Navigate buffers
 lvim.keys.normal_mode["<S-l>"] = ":bnext<CR>"
 lvim.keys.normal_mode["<S-h>"] = ":bprevious<CR>_"
 lvim.keys.insert_mode["jk"] = "<Esc>"
 lvim.keys.insert_mode["<C-l>"] = "<Del>"
+-- quick semi
+lvim.keys.normal_mode["<A-,>"] = "$a;<Esc>"
 -- -- Use which-key to add extra bindings with the leader-key prefix
 lvim.builtin.which_key.mappings["m"] = {
 	name = "Fugitive",
@@ -171,10 +189,6 @@ lvim.builtin.which_key.mappings["m"] = {
 	c = { "<cmd>:G commit<cr>", "Commit" },
 	p = { "<cmd>:G push<cr>", "Push" },
 	u = { "<cmd>:G pull<cr>", "Pull" },
-}
-lvim.builtin.which_key.mappings["0"] = {
-	"<cmd>nohlsearch<CR>",
-	"No HL",
 }
 lvim.builtin.which_key.mappings["."] = {
 	name = "Dap_Debug",
@@ -277,3 +291,5 @@ lvim.builtin.which_key.mappings["l"]["f"] = {
 	end,
 	"Format",
 }
+
+-- lvim.transparent_window = true
