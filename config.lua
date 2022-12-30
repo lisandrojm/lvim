@@ -162,6 +162,21 @@ lvim.plugins = {
 			"nvim-telescope/telescope.nvim",
 		},
 	},
+	-- neural - openai_AI
+	{
+		"dense-analysis/neural",
+		config = function()
+			require("neural").setup({
+				open_ai = {
+					api_key = "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",
+				},
+			})
+		end,
+		requires = {
+			"MunifTanjim/nui.nvim",
+			"ElPiloto/significant.nvim",
+		},
+	},
 }
 -- vim options
 vim.opt.colorcolumn = "80"
@@ -174,7 +189,7 @@ vim.opt.sidescrolloff = 8
 lvim.keys.normal_mode["<A-l>"] = "$"
 lvim.keys.normal_mode["<A-h>"] = "_"
 -- whitespaces
-lvim.keys.normal_mode["<A-ñ>"] = ":g/^$/d<CR>"
+-- lvim.keys.normal_mode["<A-ñ>"] = ":g/^$/d<CR>"
 -- Navigate buffers
 lvim.keys.normal_mode["<S-l>"] = ":bnext<CR>"
 lvim.keys.normal_mode["<S-h>"] = ":bprevious<CR>_"
@@ -183,6 +198,10 @@ lvim.keys.insert_mode["<C-l>"] = "<Del>"
 -- quick semi
 lvim.keys.normal_mode["<A-,>"] = "$a;<Esc>"
 -- -- Use which-key to add extra bindings with the leader-key prefix
+lvim.builtin.which_key.mappings["ñ"] = {
+	"<cmd>:g/^$/d<cr>",
+	"Whitespaces",
+}
 lvim.builtin.which_key.mappings["m"] = {
 	name = "Fugitive",
 	a = { "<cmd>:G<cr>", "Status" },
