@@ -168,7 +168,7 @@ lvim.plugins = {
 		config = function()
 			require("neural").setup({
 				open_ai = {
-					api_key = "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",
+					api_key = "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",
 				},
 			})
 		end,

@@ -199,7 +199,7 @@ _G.packer_plugins = {
     url = "https://github.com/folke/neodev.nvim"
   },
   neural = {
-    config = { "\27LJ\2\2Š\1\0\0\3\0\6\0\t6\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\4\0005\2\3\0=\2\5\1B\0\2\1K\0\1\0\fopen_ai\1\0\0\1\0\1\fapi_key8sk-1P14unGL29aAXSd0SD8UT3BlbkFJp8Vg1m2ybvTFQIprNLqp\nsetup\vneural\frequire\0" },
+    config = { "\27LJ\2\2Š\1\0\0\3\0\6\0\t6\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\4\0005\2\3\0=\2\5\1B\0\2\1K\0\1\0\fopen_ai\1\0\0\1\0\1\fapi_key8sk-1jA8yoOFTNhxRMj0HYd0T3BlbkFJE0vV5GVo60zfM5OLUXd7\nsetup\vneural\frequire\0" },
     loaded = true,
     path = "/home/lisandrojm/.local/share/lunarvim/site/pack/packer/start/neural",
     url = "https://github.com/dense-analysis/neural"
@@ -463,7 +463,7 @@ try_loadstring("\27LJ\2\2?\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K
 time([[Config for lualine.nvim]], false)
 -- Config for: neural
 time([[Config for neural]], true)
-try_loadstring("\27LJ\2\2Š\1\0\0\3\0\6\0\t6\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\4\0005\2\3\0=\2\5\1B\0\2\1K\0\1\0\fopen_ai\1\0\0\1\0\1\fapi_key8sk-1P14unGL29aAXSd0SD8UT3BlbkFJp8Vg1m2ybvTFQIprNLqp\nsetup\vneural\frequire\0", "config", "neural")
+try_loadstring("\27LJ\2\2Š\1\0\0\3\0\6\0\t6\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\4\0005\2\3\0=\2\5\1B\0\2\1K\0\1\0\fopen_ai\1\0\0\1\0\1\fapi_key8sk-1jA8yoOFTNhxRMj0HYd0T3BlbkFJE0vV5GVo60zfM5OLUXd7\nsetup\vneural\frequire\0", "config", "neural")
 time([[Config for neural]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
