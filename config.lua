@@ -184,6 +184,7 @@ vim.opt.timeoutlen = 40
 vim.opt.updatetime = 50
 vim.opt.showtabline = 2 -- always show tabs
 vim.opt.sidescrolloff = 8
+-- vim.opt.guicursor = "i:block"
 -- keymappings <https://www.lunarvim.org/docs/configuration/keybindings>
 --
 lvim.keys.normal_mode["<A-l>"] = "$"
