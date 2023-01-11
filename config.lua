@@ -165,20 +165,20 @@ lvim.plugins = {
 		},
 	},
 	-- neural - openai_AI
-	{
-		"dense-analysis/neural",
-		config = function()
-			require("neural").setup({
-				open_ai = {
-					api_key = "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",
-				},
-			})
-		end,
-		requires = {
-			"MunifTanjim/nui.nvim",
-			"ElPiloto/significant.nvim",
-		},
-	},
+	-- {
+	-- 	"dense-analysis/neural",
+	-- 	config = function()
+	-- 		require("neural").setup({
+	-- 			open_ai = {
+	-- 				api_key = "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",
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- 	requires = {
+	-- 		"MunifTanjim/nui.nvim",
+	-- 		"ElPiloto/significant.nvim",
+	-- 	},
+	-- },
 }
 -- vim options
 vim.opt.colorcolumn = "80"
@@ -315,3 +315,7 @@ lvim.builtin.which_key.mappings["l"]["f"] = {
 }
 
 -- lvim.transparent_window = true
+lvim.builtin.which_key.mappings["c"] = {
+	"<cmd>BufferKill<CR><cmd>:q!<CR>",
+	"Close Buffer",
+}
