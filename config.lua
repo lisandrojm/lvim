@@ -237,6 +237,22 @@ lvim.builtin.which_key.mappings["."] = {
 	k = { "<cmd>lua require'dap'.up()<cr>zz", "Up" },
 	j = { "<cmd>lua require'dap'.down()<CR>zz]", "Down" },
 }
+lvim.builtin.which_key.mappings["j"] = {
+	name = "Harpoon",
+  a = { "<cmd>BookmarkAnnotate<cr>", "Annotate" },
+  c = { "<cmd>BookmarkClear<cr>", "Clear" },
+  m = { "<cmd>BookmarkToggle<cr>", "Toggle" },
+  h = { '<cmd>lua require("harpoon.mark").add_file()<cr>', "Harpoon" },
+  j = { "<cmd>BookmarkNext<cr>", "Next" },
+  k = { "<cmd>BookmarkPrev<cr>", "Prev" },
+  s = { "<cmd>BookmarkShowAll<cr>", "Prev" },
+  -- s = {
+  --   "<cmd>lua require('telescope').extensions.vim_bookmarks.all({ hide_filename=false, prompt_title=\"bookmarks\", shorten_path=false })<cr>",
+  --   "Show",
+  -- },
+  x = { "<cmd>BookmarkClearAll<cr>", "Clear All" },
+  u = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', "Harpoon UI" },
+}
 -- javascript_dap
 local dap = require("dap")
 dap.adapters.node2 = {
