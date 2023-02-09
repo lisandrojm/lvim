@@ -79,8 +79,8 @@ local formatters = require("lvim.lsp.null-ls.formatters")
 formatters.setup({
 	{ command = "stylua" },
 	{
-		command = "prettier",
-		extra_args = { "--print-with", "100" },
+		command = "prettierd",
+		-- extra_args = { "--print-with", "100" },
 		filetypes = { "typescript", "typescriptreact", "css", "scss", "javascript" },
 	},
 	{
@@ -126,7 +126,9 @@ linters.setup({
 --
 -- lisandrojm
 -- -- Change theme settings
-lvim.colorscheme = "tokyonight-night"
+-- lvim.colorscheme = "tokyonight-storm"
+--   lvim.colorscheme = "lunar"
+lvim.colorscheme = "tokyonight"
 -- lvim.colorscheme = "dracula"
 -- After changing plugin config exit and reopen LunarVim, Run :PackerSync
 lvim.builtin.indentlines.active = false
@@ -134,6 +136,7 @@ lvim.builtin.breadcrumbs.active = false
 lvim.builtin.bufferline.options.always_show_bufferline = true
 lvim.builtin.illuminate.active = false
 lvim.builtin.theme.active = false
+lvim.builtin.smooth = false
 -- -- Additional Plugins <https://www.lunarvim.org/docs/plugins#user-plugins>
 lvim.plugins = {
 	{
