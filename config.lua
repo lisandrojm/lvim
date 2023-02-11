@@ -128,7 +128,7 @@ linters.setup({
 -- -- Change theme settings
 -- lvim.colorscheme = "tokyonight-storm"
 --   lvim.colorscheme = "lunar"
-lvim.colorscheme = "tokyonight"
+lvim.colorscheme = "tokyonight-night"
 -- lvim.colorscheme = "dracula"
 -- After changing plugin config exit and reopen LunarVim, Run :PackerSync
 lvim.builtin.indentlines.active = false
@@ -141,6 +141,9 @@ lvim.builtin.smooth = false
 lvim.plugins = {
 	{
 		"tpope/vim-fugitive",
+	},
+	{
+		"Mofiqul/dracula.nvim",
 	},
 	{
 		"ThePrimeagen/harpoon",
@@ -168,6 +171,7 @@ lvim.plugins = {
 	{ "phaazon/hop.nvim" },
 	{ "andymass/vim-matchup" },
 	{ "lunarvim/vim-solidity" },
+	{ "tpope/vim-surround" },
 	{ "norcalli/nvim-colorizer.lua" },
 	{
 		"jackMort/ChatGPT.nvim",
@@ -182,6 +186,7 @@ lvim.plugins = {
 			"nvim-telescope/telescope.nvim",
 		},
 	},
+	{ "joshdick/onedark.vim" },
 }
 
 -- vim options
@@ -242,19 +247,19 @@ lvim.builtin.which_key.mappings["."] = {
 }
 lvim.builtin.which_key.mappings["j"] = {
 	name = "Harpoon",
-  a = { "<cmd>BookmarkAnnotate<cr>", "Annotate" },
-  c = { "<cmd>BookmarkClear<cr>", "Clear" },
-  m = { "<cmd>BookmarkToggle<cr>", "Toggle" },
-  h = { '<cmd>lua require("harpoon.mark").add_file()<cr>', "Harpoon" },
-  j = { "<cmd>BookmarkNext<cr>", "Next" },
-  k = { "<cmd>BookmarkPrev<cr>", "Prev" },
-  s = { "<cmd>BookmarkShowAll<cr>", "Prev" },
-  -- s = {
-  --   "<cmd>lua require('telescope').extensions.vim_bookmarks.all({ hide_filename=false, prompt_title=\"bookmarks\", shorten_path=false })<cr>",
-  --   "Show",
-  -- },
-  x = { "<cmd>BookmarkClearAll<cr>", "Clear All" },
-  u = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', "Harpoon UI" },
+	a = { "<cmd>BookmarkAnnotate<cr>", "Annotate" },
+	c = { "<cmd>BookmarkClear<cr>", "Clear" },
+	m = { "<cmd>BookmarkToggle<cr>", "Toggle" },
+	h = { '<cmd>lua require("harpoon.mark").add_file()<cr>', "Harpoon" },
+	j = { "<cmd>BookmarkNext<cr>", "Next" },
+	k = { "<cmd>BookmarkPrev<cr>", "Prev" },
+	s = { "<cmd>BookmarkShowAll<cr>", "Prev" },
+	-- s = {
+	--   "<cmd>lua require('telescope').extensions.vim_bookmarks.all({ hide_filename=false, prompt_title=\"bookmarks\", shorten_path=false })<cr>",
+	--   "Show",
+	-- },
+	x = { "<cmd>BookmarkClearAll<cr>", "Clear All" },
+	u = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', "Harpoon UI" },
 }
 -- javascript_dap
 local dap = require("dap")
@@ -340,3 +345,8 @@ lvim.builtin.which_key.mappings["c"] = {
 	"<cmd>BufferKill<CR><cmd>:q!<CR>",
 	"Close Buffer",
 }
+
+--lvim pynvim path
+vim.cmd([[
+let g:python3_host_prog = '/path/to/python3'
+]])
