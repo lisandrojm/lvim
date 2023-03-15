@@ -61,6 +61,34 @@ lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
 -- local opts = {} -- check the lspconfig documentation for a list of all possible options
 -- require("lvim.lsp.manager").setup("pyright", opts)
 ---remove a server from the skipped list, e.g. eslint, or emmet_ls. IMPORTANT: Requires `:LvimCacheReset` to take effect
+
+local lspconfig = require("lspconfig")
+
+local configs = require("lspconfig/configs")
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+lspconfig.emmet_ls.setup({
+	on_attach = on_attach,
+
+	capabilities = capabilities,
+
+	filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less","javascript" },
+
+	init_options = {
+
+		html = {
+
+			options = {
+
+				["bem.enabled"] = true,
+			},
+		},
+	},
+})
+
 ---`:LvimInfo` lists which server(s) are skipped for the current filetype
 lvim.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(server)
 	return server ~= "emmet_ls"
@@ -206,7 +234,6 @@ lvim.keys.normal_mode["<A-h>"] = "_"
 -- Navigate buffers
 lvim.keys.normal_mode["<S-l>"] = ":bnext<CR>"
 lvim.keys.normal_mode["<S-h>"] = ":bprevious<CR>_"
--- lvim.keys.insert_mode["jk"] = "<Esc>"
 lvim.keys.insert_mode["<C-l>"] = "<Del>"
 -- quick semi
 lvim.keys.normal_mode["<A-,>"] = "$a;<Esc>"
