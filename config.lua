@@ -72,11 +72,8 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 lspconfig.emmet_ls.setup({
 	on_attach = on_attach,
-
 	capabilities = capabilities,
-
-	filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less","javascript" },
-
+	filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "javascript" },
 	init_options = {
 
 		html = {
@@ -103,13 +100,15 @@ end, lvim.lsp.automatic_configuration.skipped_servers)
 --   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 -- end
 -- linters and formatters <https://www.lunarvim.org/docs/languages#lintingformatting>
+
 local formatters = require("lvim.lsp.null-ls.formatters")
 formatters.setup({
+
 	{ command = "stylua" },
 	{
-		command = "prettierd",
-		-- extra_args = { "--print-with", "100" },
-		filetypes = { "typescript", "typescriptreact", "css", "scss", "javascript" },
+		command = "prettier",
+		-- extra_args = { "--print-with", "999" },
+		filetypes = { "html", "typescript", "typescriptreact", "css", "scss", "javascript" },
 	},
 	{
 		command = "black",
@@ -201,6 +200,8 @@ lvim.plugins = {
 	{ "lunarvim/vim-solidity" },
 	{ "tpope/vim-surround" },
 	{ "norcalli/nvim-colorizer.lua" },
+
+	-- ChatGPT
 	{
 		"jackMort/ChatGPT.nvim",
 		config = function()
@@ -214,9 +215,7 @@ lvim.plugins = {
 			"nvim-telescope/telescope.nvim",
 		},
 	},
-	{ "joshdick/onedark.vim" },
 }
-
 -- vim options
 vim.opt.colorcolumn = "80"
 vim.opt.timeoutlen = 0
@@ -234,6 +233,7 @@ lvim.keys.normal_mode["<A-h>"] = "_"
 -- Navigate buffers
 lvim.keys.normal_mode["<S-l>"] = ":bnext<CR>"
 lvim.keys.normal_mode["<S-h>"] = ":bprevious<CR>_"
+lvim.keys.insert_mode["ññ"] = "<Esc>"
 lvim.keys.insert_mode["<C-l>"] = "<Del>"
 -- quick semi
 lvim.keys.normal_mode["<A-,>"] = "$a;<Esc>"
