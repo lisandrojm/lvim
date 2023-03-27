@@ -158,7 +158,7 @@ linters.setup({
 lvim.colorscheme = "tokyonight-night"
 -- lvim.colorscheme = "dracula"
 -- After changing plugin config exit and reopen LunarVim, Run :PackerSync
-lvim.builtin.indentlines.active = false
+lvim.builtin.indentlines.active = true
 lvim.builtin.breadcrumbs.active = false
 lvim.builtin.bufferline.options.always_show_bufferline = true
 lvim.builtin.illuminate.active = false
@@ -377,3 +377,5 @@ lvim.builtin.which_key.mappings["c"] = {
 vim.cmd([[
 let g:python3_host_prog = '/path/to/python3'
 ]])
+
+
