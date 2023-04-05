@@ -263,7 +263,7 @@ _G.packer_plugins = {
   ["nvim-ts-rainbow"] = {
     loaded = true,
     path = "/home/lisandrojm/.local/share/lunarvim/site/pack/packer/start/nvim-ts-rainbow",
-    url = "https://github.com/p00f/nvim-ts-rainbow"
+    url = "https://github.com/mrjones2014/nvim-ts-rainbow"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
@@ -329,11 +329,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/lisandrojm/.local/share/lunarvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
-  },
-  ["vim-matchup"] = {
-    loaded = true,
-    path = "/home/lisandrojm/.local/share/lunarvim/site/pack/packer/start/vim-matchup",
-    url = "https://github.com/andymass/vim-matchup"
   },
   ["vim-solidity"] = {
     loaded = true,

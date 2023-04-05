@@ -6,9 +6,10 @@
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.relativenumber = true
-vim.opt.cursorline = false
+vim.opt.cursorline = true
 vim.opt.lazyredraw = true
 vim.opt.regexpengine = 1
+vim.opt.hlsearch = false
 -- general
 lvim.log.level = "info"
 lvim.format_on_save = {
@@ -48,6 +49,11 @@ lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
+lvim.builtin.treesitter.matchup.enable = false
+lvim.builtin.treesitter.context_commentstring.enable = false
+lvim.builtin.autopairs.active = true
+lvim.builtin.treesitter.highlight.enable = true
+
 -- lvim.builtin.lualine.style = "default"
 -- Automatically install missing parsers when entering buffer
 -- lvim.builtin.treesitter.auto_install = true
@@ -76,9 +82,7 @@ lspconfig.emmet_ls.setup({
 	capabilities = capabilities,
 	filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "javascript" },
 	init_options = {
-
 		html = {
-
 			options = {
 
 				["bem.enabled"] = true,
@@ -195,9 +199,11 @@ lvim.plugins = {
 		run = "./install.sh",
 		requires = "hrsh7th/nvim-cmp",
 	},
-	{ "p00f/nvim-ts-rainbow" },
+	{
+		"mrjones2014/nvim-ts-rainbow",
+	},
 	{ "phaazon/hop.nvim" },
-	{ "andymass/vim-matchup" },
+	-- { "andymass/vim-matchup" },
 	{ "lunarvim/vim-solidity" },
 	{ "tpope/vim-surround" },
 	{ "norcalli/nvim-colorizer.lua" },
