@@ -175,30 +175,28 @@ lvim.plugins = {
 		"tpope/vim-fugitive",
 	},
 	{
-		"Mofiqul/dracula.nvim",
-	},
-	{
 		"ThePrimeagen/harpoon",
 	},
-	{
-		"tzachar/cmp-tabnine",
-		config = function()
-			local tabnine = require("cmp_tabnine.config")
-			tabnine:setup({
-				max_lines = 1000,
-				max_num_results = 20,
-				sort = true,
-				run_on_every_keystroke = true,
-				snippet_placeholder = "..",
-				ignored_file_types = { -- default is not to ignore
-					-- uncomment to ignore in lua:
-					-- lua = true
-				},
-			})
-		end,
-		run = "./install.sh",
-		requires = "hrsh7th/nvim-cmp",
-	},
+	{ "codota/tabnine-nvim", run = "./dl_binaries.sh" },
+	-- {
+	-- 	"tzachar/cmp-tabnine",
+	-- 	config = function()
+	-- 		local tabnine = require("cmp_tabnine.config")
+	-- 		tabnine:setup({
+	-- 			max_lines = 1000,
+	-- 			max_num_results = 20,
+	-- 			sort = true,
+	-- 			run_on_every_keystroke = true,
+	-- 			snippet_placeholder = "..",
+	-- 			ignored_file_types = { -- default is not to ignore
+	-- 				-- uncomment to ignore in lua:
+	-- 				-- lua = true
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- 	run = "./install.sh",
+	-- 	requires = "hrsh7th/nvim-cmp",
+	-- },
 	{
 		"mrjones2014/nvim-ts-rainbow",
 	},
@@ -384,3 +382,26 @@ lvim.builtin.which_key.mappings["c"] = {
 vim.cmd([[
 let g:python3_host_prog = '/path/to/python3'
 ]])
+
+--tabnine
+require("tabnine").setup({
+	disable_auto_comment = true,
+	accept_keymap = "<Tab>",
+	dismiss_keymap = "<C-]>",
+	debounce_ms = 800,
+	suggestion_color = { gui = "#808080", cterm = 244 },
+	exclude_filetypes = { "TelescopePrompt" },
+	log_file_path = nil, -- absolute path to Tabnine log file
+})
+
+-- cmp_mapping
+local cmp = require("cmp")
+lvim.builtin.cmp.mapping = cmp.mapping.preset.insert({
+	["<C-k>"] = cmp.mapping.select_prev_item(),
+	["<C-j>"] = cmp.mapping.select_next_item(),
+	["<C-b>"] = cmp.mapping.scroll_docs(-4),
+	["<C-f>"] = cmp.mapping.scroll_docs(4),
+	["<C-Space>"] = cmp.mapping.complete(),
+	["<C-e>"] = cmp.mapping.abort(),
+	["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+})
